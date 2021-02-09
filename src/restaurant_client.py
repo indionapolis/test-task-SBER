@@ -14,7 +14,7 @@ class Client:
     def book(self, time: str, n_people: str) -> str:
         for i, table in enumerate(self._booking_table):
             if table[0] >= int(n_people):
-                if not table[1][time]:
+                if not table[1].get(time, True):
                     table[1][time] = True
                     self._reservations.append({"time": time, "n_people": n_people})
 
